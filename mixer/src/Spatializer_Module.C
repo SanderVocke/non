@@ -390,7 +390,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.default_value = 0.0f;
         
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -404,7 +403,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.default_value = 0.0f;
         
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -418,7 +416,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.default_value = 1.0f;
         
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -433,7 +430,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.visible = false;
 
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -446,7 +442,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.maximum = 90.0f;
         p.hints.default_value = 90.0f;
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -459,7 +454,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.maximum = +180.0f;
         p.hints.default_value = 0.0f;
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -472,7 +466,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.maximum = 1.0f;
         p.hints.default_value = 0.0f;
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -486,7 +479,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.default_value = 1.0f;
         p.hints.visible = false;
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -500,7 +492,6 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.default_value = 0.0f;
         p.hints.visible = false;
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
     }
@@ -514,9 +505,12 @@ Spatializer_Module::Spatializer_Module ( ) : JACK_Module ( false )
         p.hints.default_value = 0.0f;
         p.hints.visible = false;
         p.connect_to( new float );
-        p.control_value( p.hints.default_value );
 
         add_port( p );
+    }
+
+    for (size_t port_idx=0; port_idx < control_input.size(); port_idx++) {
+        control_input[port_idx].control_value(control_input[port_idx].hints.default_value);
     }
 
     log_create();
